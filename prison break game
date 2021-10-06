@@ -1,0 +1,137 @@
+# Course: CS 30
+# Period: 2
+# Date created: 21/09/2021
+# Name: Luka Dundjerovic
+# Description: Prison break text-based game
+import sys
+import time
+
+locations = ["Courtyard", "Cafeteria", "Workshop"]
+actions = ["Fight", "Run"]
+
+
+def show_locations():
+    """
+    prints all the possible locations from the locations list above
+    """
+    for item in locations:
+        print("* Go to: " + item)
+    print("To go to Couryard type 'court', to go to Cafeteria type 'caf', to go to Workshop type 'work' or type 'quit' to end the program at anytime")
+    print(user_command())
+
+
+def show_actions():
+    """
+    prints all the possible actions from the actions list above
+    """
+    print("Would you like to:")
+    for item in actions:
+        print("* " + item)
+
+
+def user_command():
+    """
+    Allows the player choose which locations they
+    would like to access in the game
+    """
+    user_input = input("Go to: ")
+    if user_input == "Court" or user_input == "court":
+        print(Courtyard())
+    elif user_input == "Caf" or user_input == "caf":
+        print(Cafeteria())
+    elif user_input == "Work" or user_input == "work":
+        print(Workshop())
+    elif user_input == "Quit" or user_input == "quit":
+        print("Goodbye")
+        sys.exit()
+    else:
+        print("Invalid input!")
+        print(user_command())
+
+
+def game_intro():
+    """
+    Introduces the game and prints the possible options the user can choose
+    """
+    print("Prison Break")
+    time.sleep(2)
+    print("You've been locked up and now is the perfect chance to escape!")
+    time.sleep(2)
+    print("Here are your options :")
+    print(show_locations())
+
+
+def Courtyard():
+    """
+    Goes through the possible options if the user choses the courtyard location
+    """
+    print("You get to the courtyard and another inmate approaches you.")
+    time.sleep(2)
+    print(show_actions())
+    action_input = input("Action: ")
+    if action_input == "Run" or action_input == "run":
+        print("You avoided the inmate")
+        print(show_locations())
+    elif action_input == "Fight" or action_input == "fight":
+        print("You and the inmate trade a few shots")
+        time.sleep(2)
+        print("POW!")
+        time.sleep(2)
+        print("Everything goes dark")
+        time.sleep(2)
+        print("You wake up a few hours later back in your jail cell")
+        print("What would you like to do from here?")
+        print(show_locations())
+    elif action_input == "Quit" or action_input == "quit":
+        print("Goodbye")
+        sys.exit()
+    else:
+        print("Invalid input!")
+        print(Courtyard())
+
+
+def Cafeteria():
+    """
+    Gives a description of the cafeteria then prints the
+    locations and allows the user to choose where to go
+    """
+    print("Looks like there's nothing in the cafeteria that's going to help you escape")
+    time.sleep(2)
+    print("What would you like to do from here?")
+    print(show_locations())
+
+
+def Workshop():
+    """
+    Describes workshop then gives the user the option
+    to fight, run or quit the program
+    """
+    print("You walk into the workshop that's full of inmates and a guard bumps into you as he is passing by.")
+    time.sleep(2)
+    print("You look back and catch his gaze")
+    time.sleep(2)
+    print(show_actions())
+    print("To fight type 'Fight', to run type 'Run' or type 'quit' at anytime to end the program")
+    action_input = input("Action: ")
+    if action_input == "Run" or action_input == "run":
+        print("You got away from the guard")
+        print(show_locations())
+    elif action_input == "Fight" or action_input == "fight":
+        print("You deliver a hard blow to the guard and his keys slide across the floor")
+        time.sleep(3)
+        print("The workshop goes wild and a huge brawl breaks out")
+        time.sleep(3)
+        print("You make a run for the keys and slip out of the workshop")
+        time.sleep(3)
+        print("You see an opening and book it for the for the door")
+        time.sleep(3)
+        print("Congratulations! You've successfully escaped the prison.")
+        sys.exit()
+    elif action_input == "Quit" or action_input == "quit":
+        print("Goodbye")
+        sys.exit()
+    else:
+        print("Invalid input!")
+        print(Workshop())
+
+game_intro()
